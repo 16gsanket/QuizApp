@@ -1,7 +1,11 @@
+import { ConsumeQuestionContext } from "../contexts/QuizContext";
 import Options from "./Options";
 
-export default function Question({ question, dispatch, answer }) {
+export default function Question() {
+  const { Questions, dispatch, answer } = ConsumeQuestionContext();
+  const question = Questions;
   console.log(question);
+  console.log(answer);
 
   return (
     <div>

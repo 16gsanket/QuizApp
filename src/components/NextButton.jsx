@@ -1,4 +1,7 @@
-function NextButton({dispatch , answer , numQuestions,index}) {
+import { ConsumeQuestionContext } from "../contexts/QuizContext";
+
+function NextButton() {
+    const {dispatch , answer , numQuestions,index} = ConsumeQuestionContext();
 
     if(answer === null) return null;
 

@@ -1,34 +1,30 @@
-export default function Progress({
-  index,
-  numQuestions,
-  points,
-  maxPossiblePoints,
-  answer
-}) {
+import { ConsumeQuestionContext } from "../contexts/QuizContext";
+
+export default function Progress() {
+  const { index, numQuestions, points, maxPossiblePoints, answer } =
+    ConsumeQuestionContext();
   return (
-    <header
-  
-    >
+    <header>
+      <progress max={numQuestions} value={index + Number(answer !== null)} />
 
-      <progress max = {numQuestions} value={index + Number(answer !== null)} />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          margin: "20px",
+        }}
+      >
+        <p style={{ fontSize: "16px" }}>
+          Question
+          <strong>
+            {index + 1}/{numQuestions}
+          </strong>
+        </p>
 
-      <div     style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        margin: "20px",
-      }}>
-
-      <p style={{ fontSize: "16px" }}>
-        Question
-        <strong>
-          {index + 1}/{numQuestions}
-        </strong>
-      </p>
-
-      <p style={{ fontSize: "16px" }}>
-        {points}/{maxPossiblePoints} Points
-      </p>
+        <p style={{ fontSize: "16px" }}>
+          {points}/{maxPossiblePoints} Points
+        </p>
       </div>
     </header>
   );

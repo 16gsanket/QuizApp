@@ -1,6 +1,5 @@
 function Options({ question, dispatch, answer }) {
-
-const hasAnswered = answer !== null
+  const hasAnswered = answer !== null;
 
   return (
     <div>
@@ -8,11 +7,11 @@ const hasAnswered = answer !== null
         {question.options.map((option, index) => (
           <button
             className={`btn btn-option ${index === answer ? "answer" : ""} ${
-
-              hasAnswered ? 
-              index === question.correctOption ? "correct" : "wrong" : ""
-
-
+              hasAnswered
+                ? index === question.correctOption
+                  ? "correct"
+                  : "wrong"
+                : ""
             }`}
             key={option}
             disabled={answer !== null}
