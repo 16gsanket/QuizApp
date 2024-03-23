@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const SECS_PER_QUESTION = 30;
+const SECS_PER_QUESTION = 1;
+//vary the SECS_PER_QUESTION to reduce or increase the time
 const initialState = {
   Questions: [],
   //loading , error , ready ,  active , finished
@@ -38,15 +39,24 @@ function reducer(state, action) {
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
     case "finish":
+
+      const new_high_score = state.points > state.high_score ? (state.points) : state.high_score
+      console.log(new_high_score);
       return {
         ...state,
         status: "finished",
-        high_score:
-          state.points > state.high_score ? state.points : state.high_score,
+        high_score:new_high_score,
+        //   state.points > state.high_score ? console.log('state point is higher') : console.log('highest point point is higher'),
       };
 
     case "restart":
-      return { ...initialState, status: "ready" };
+      console.log("test is restarted");
+      return {
+        ...initialState,
+        status: "ready",
+        Questions: state.Questions,
+        high_score: state.high_score,
+      };
     case "tick":
       return {
         ...state,

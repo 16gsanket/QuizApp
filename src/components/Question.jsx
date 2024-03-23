@@ -2,8 +2,10 @@ import { ConsumeQuestionContext } from "../contexts/QuizContext";
 import Options from "./Options";
 
 export default function Question() {
-  const { Questions, dispatch, answer } = ConsumeQuestionContext();
-  const question = Questions;
+  const { Questions, dispatch, answer, index } = ConsumeQuestionContext();
+  const context = ConsumeQuestionContext();
+  console.log(context)
+  const question = Questions[index];
   console.log(question);
   console.log(answer);
 
